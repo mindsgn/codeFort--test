@@ -18,6 +18,7 @@ export default function Home() {
     initialValues: {
       search: '',
     },
+    //@ts-ignore
     onSubmit: (values) => {
       try{
         if(values.search===''){
