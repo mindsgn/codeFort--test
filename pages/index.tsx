@@ -41,6 +41,7 @@ export default function Home() {
 
   return (
     <Box
+    width='100vw'
     display={'flex'}
     flexDir='column'
     alignItems= 'center'
@@ -79,8 +80,9 @@ export default function Home() {
         <TableContainer
           height={'50vh'}
           overflowY='scroll'
-          width='100%'>
-          <Table variant='simple'>
+          maxWidth='100%'>
+          <Table variant='simple'
+          size='sm'>
             <TableCaption>Book Results for: {search}</TableCaption>
               <Thead>
                 <Tr>
@@ -97,17 +99,23 @@ export default function Home() {
                   return(
                     <Tr
                       onClick={() => {
+                        let author = null
+                        let year = null
+
+                        if(author_name) author = author_name[0]
+                        if(publish_year) year = publish_year[0]
+
                         setSelectedBook({
                           title,
-                          author: author_name[0],
-                          year: publish_year[0]
+                          author,
+                          year
                         })
                       }}
                       cursor={'pointer'}
                       key={key}>
                       <Td>{title}</Td>
                       {author_name? <Td>{author_name[0]}</Td>: null}
-                      {publish_year? <Td>{publish_year[0]}</Td>: null}
+                      {publish_year? <Td >{publish_year[0]}</Td>: null}
                     </Tr>
                   )                 
                 })
